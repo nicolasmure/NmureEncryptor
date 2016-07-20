@@ -83,10 +83,17 @@ class EncryptorTest extends \PHPUnit_Framework_TestCase
         $encrypted2 = $this->encryptor->encrypt($this->data);
         $this->assertNotEquals($encrypted, $encrypted2);
 
+        // enable autoIvUpdate : the next encryption should
+        // generate a new IV after the encryption
+        $this->encryptor->enableAutoIvUpdate();
+        $iv = $this->encryptor->getIv();
+
         // during the 3rd encryption : the IV in use is the same than
-        // for the 2nd encryption as we haven't updated it.
+        // for the 2nd encryption as we haven't updated it. The data is encrypted and
+        // the IV is updated as we enabled the auto update.
         $encrypted3 = $this->encryptor->encrypt($this->data);
         $this->assertEquals($encrypted2, $encrypted3);
+        $this->assertNotEquals($iv, $this->encryptor->getIv());
     }
 
     /**
