@@ -2,12 +2,11 @@
 
 namespace Nmure\Encryptor\Tests\Formatter;
 
-use PHPUnit\Framework\TestCase;
 use Nmure\Encryptor\Formatter\Base64Formatter;
 use Nmure\Encryptor\Formatter\FormatterInterface;
 use Nmure\Encryptor\Encryptor;
 
-class Base64FormatterTest extends TestCase
+class Base64FormatterTest extends \PHPUnit_Framework_TestCase
 {
     private $iv = 'iv';
     private $data = 'data';
