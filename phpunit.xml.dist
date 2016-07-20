@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="./tests/bootstrap.php" colors="true">
+
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml" />
+    </logging>
+
+    <testsuites>
+        <testsuite name="NmureEncryptor test suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./build</directory>
+                <directory>./tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,0 +1,19 @@
+{
+    "name": "nmure/encryptor",
+    "description": "PHP data encryptor using open_ssl",
+    "keywords": ["encryption", "encrypt", "decrypt", "data", "open", "ssl", "security", "hash"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas MURE",
+            "email": "nm2107@hotmail.fr",
+            "homepage": "https://github.com/nicolasmure"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": { "Nmure\\Encryptor\\": "src/" }
+    }
+}

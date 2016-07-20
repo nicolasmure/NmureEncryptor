@@ -1,0 +1,14 @@
+language: php
+php:
+    - '5.4'
+    - '7.0'
+
+before_install:
+    - mkdir -p build/logs
+    - composer self-update
+
+install:
+    - composer require satooshi/php-coveralls '~1.0'
+
+after_success:
+    - php vendor/bin/coveralls

@@ -1,0 +1,9 @@
+phpunit:
+    image: phpunit/phpunit
+    volumes:
+        - .:/app
+
+composer:
+    image: composer/composer
+    volumes:
+        - .:/app
