@@ -5,6 +5,27 @@
 
 PHP data encryptor using open_ssl
 
+## Table of contents
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Basic usage](#basic-usage)
+        - [Encrypt](#encrypt)
+        - [Decrypt](#decrypt)
+    - [Advanced usage](#advanced-usage)
+- [Formatters](#formatters)
+    - [Built-in formatters](#built-in-formatters)
+        - [Base64Formatter](#base64formatter)
+        - [HexFormatter](#hexformatter)
+    - [Make your own formatter](#make-your-own-formatter)
+- [API](#api)
+- [Troubleshooting](#troubleshooting)
+    - [Using the HexFormatter with a C# app](#using-the-hexformatter-with-a-c-app)
+- [Development / contributing](#development--contributing)
+    - [Installing ecosystem](#installing-ecosystem)
+    - [Testing](#testing)
+    - [PHP CS Fixer](#php-cs-fixer)
+- [License](#license)
+
 ## Installation
 Use composer to install the lib :
 
@@ -127,7 +148,7 @@ in two parts from the colon, and get back the IV and the encrypted data during t
 
 #### HexFormatter
 
-The string returned by the [`HexFormatter`](/src/Formatters/HexFormatter.php "Nmure\Encryptor\Formatter\HexFormatter")
+The string returned by the [`HexFormatter`](/src/Formatter/HexFormatter.php "Nmure\Encryptor\Formatter\HexFormatter")
 during the encryption process contains the hex representation of the concatened
 IV and encrypted data binary string.
 
