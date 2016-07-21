@@ -3,25 +3,12 @@
 namespace Nmure\Encryptor\Tests\Formatter;
 
 use Nmure\Encryptor\Formatter\Base64Formatter;
-use Nmure\Encryptor\Formatter\FormatterInterface;
-use Nmure\Encryptor\Encryptor;
 
-class Base64FormatterTest extends \PHPUnit_Framework_TestCase
+class Base64FormatterTest extends AbstractFormatterTest
 {
-    private $iv = 'iv';
-    private $data = 'data';
-    private $formatter;
-
-    protected function setUp()
-    {
-        $this->formatter = new Base64Formatter();
-    }
-
-    protected function tearDown()
-    {
-        unset($this->formatter);
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function testFormat()
     {
         $expected = sprintf('%s:%s', base64_encode($this->iv), base64_encode($this->data));
@@ -34,23 +21,14 @@ class Base64FormatterTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseThrowsParsingException()
     {
-        $this->formatter->parse('abcdef');
+        $this->formatter->parse('abcdef', 0);
     }
 
-    public function testFormatAndParse()
+    /**
+     * {@inheritdoc}
+     */
+    protected function getFormatter()
     {
-        $formatted = $this->formatter->format($this->iv, $this->data);
-        $parsed = $this->formatter->parse($formatted);
-        $this->assertEquals($this->iv, $parsed[FormatterInterface::KEY_IV]);
-        $this->assertEquals($this->data, $parsed[FormatterInterface::KEY_DATA]);
-    }
-
-    public function testFormatterWithEncryptor()
-    {
-        $encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
-        $encryptor->setFormatter($this->formatter);
-
-        $output = $encryptor->encrypt($this->data);
-        $this->assertEquals($this->data, $encryptor->decrypt($output));
+        return new Base64Formatter();
     }
 }

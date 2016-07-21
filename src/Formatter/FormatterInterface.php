@@ -24,22 +24,23 @@ interface FormatterInterface
      * parse function of this class.
      *
      * @param  string $iv The Initialization Vector.
-     * @param  string $data The encrypted data.
+     * @param  string $encrypted The encrypted data.
      *
      * @return string The formatted string, containing the IV and the encrypted data.
      */
-    public function format($iv, $data);
+    public function format($iv, $encrypted);
 
     /**
      * Parse the data formated by this class and
      * returns an array containing the IV
      * and the encrypted data.
      *
-     * @param  string $data The formated data containing the IV and the encrypted data.
+     * @param  string $input The formated data containing the IV and the encrypted data.
+     * @param  int    $ivLength The length of the IV used by the cipher method.
      *
      * @throws Nmure\Encryptor\Exception\ParsingException When not able to parse the given data.
      *
      * @return array An array indexed with self::KEY_IV and self::KEY_DATA keys.
      */
-    public function parse($data);
+    public function parse($input, $ivLength);
 }
