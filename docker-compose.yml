@@ -3,6 +3,11 @@ phpunit:
     volumes:
         - .:/app
 
+phpcs:
+    image: texthtml/phpcs
+    volumes:
+        - .:/scripts
+
 composer:
     image: composer/composer
     volumes:

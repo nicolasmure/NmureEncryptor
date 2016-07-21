@@ -10,7 +10,7 @@ $enc = new Encyptor($secret, $cypher);
 $enc->setFormatter(new FormatterInterface());
 ```
 
-## Development
+## Development / Contributing
 
 ### Installing dependencies
 ```bash
@@ -20,4 +20,9 @@ docker-compose run --rm composer install
 ### Testing
 ``` bash
 docker-compose run --rm phpunit -c /app
+```
+
+### PHP CS Fixer
+```bash
+docker-compose run --rm phpcs phpcbf --standard=PSR2 /scripts/
 ```
