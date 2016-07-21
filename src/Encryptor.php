@@ -94,7 +94,7 @@ final class Encryptor
     public function decrypt($data)
     {
         if ($this->formatter) {
-            $parsed = $this->formatter->parse($data);
+            $parsed = $this->formatter->parse($data, $this->getIvLength());
             $this->iv = $parsed[FormatterInterface::KEY_IV];
             $data = $parsed[FormatterInterface::KEY_DATA];
         }
@@ -117,7 +117,7 @@ final class Encryptor
      */
     public function generateIv()
     {
-        $this->iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($this->cipher));
+        $this->iv = openssl_random_pseudo_bytes($this->getIvLength());
 
         return $this->iv;
     }
@@ -160,5 +160,13 @@ final class Encryptor
     public function setFormatter(FormatterInterface $formatter = null)
     {
         $this->formatter = $formatter;
+    }
+
+    /**
+     * @return int The length of the IV used by the cipher method.
+     */
+    private function getIvLength()
+    {
+        return openssl_cipher_iv_length($this->cipher);
     }
 }

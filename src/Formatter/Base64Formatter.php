@@ -9,17 +9,17 @@ class Base64Formatter implements FormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format($iv, $data)
+    public function format($iv, $encrypted)
     {
-        return sprintf('%s:%s', base64_encode($iv), base64_encode($data));
+        return sprintf('%s:%s', base64_encode($iv), base64_encode($encrypted));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function parse($data)
+    public function parse($input, $ivLength)
     {
-        $parts = explode(':', $data);
+        $parts = explode(':', $input);
 
         if (2 !== sizeof($parts)) {
             throw new ParsingException(sprintf('Unable to parse the given data with the "%s" formatter', get_class($this)));
