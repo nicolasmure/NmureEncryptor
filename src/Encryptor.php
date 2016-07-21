@@ -64,7 +64,7 @@ final class Encryptor
      */
     public function encrypt($data)
     {
-        if (!$this->iv) {
+        if (!$this->iv || $this->autoIvUpdate) {
             $this->generateIv();
         }
 
@@ -72,10 +72,6 @@ final class Encryptor
 
         if ($this->formatter) {
             $output = $this->formatter->format($this->iv, $output);
-        }
-
-        if ($this->autoIvUpdate) {
-            $this->generateIv();
         }
 
         return $output;

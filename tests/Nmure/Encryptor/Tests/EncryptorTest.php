@@ -73,26 +73,29 @@ class EncryptorTest extends \PHPUnit_Framework_TestCase
     {
         // autoIvUpdate should be enabled by default.
         // during the 1st encryption : the IV is set, then the data is encrypted
-        // and the IV is updated.
         $encrypted = $this->encryptor->encrypt($this->data);
-        $this->encryptor->disableAutoIvUpdate();
 
-        // during the 2nd encryption : the IV in use is the one updated
-        // from the previous encryption. The data is encrypted and
-        // the IV is not updated as we disabled the auto update.
+        // during the 2nd encryption : the IV will be automatically
+        // updated before the encryption process.
+        // Then, the data is encrypted.
         $encrypted2 = $this->encryptor->encrypt($this->data);
         $this->assertNotEquals($encrypted, $encrypted2);
 
+        // disabling autoIvUpdate : the next encryption should
+        // use the same IV as the previous encryption
+        $this->encryptor->disableAutoIvUpdate();
+        $encrypted3 = $this->encryptor->encrypt($this->data);
+        $this->assertEquals($encrypted2, $encrypted3);
+
         // enable autoIvUpdate : the next encryption should
-        // generate a new IV after the encryption
+        // generate a new IV before the encryption
         $this->encryptor->enableAutoIvUpdate();
         $iv = $this->encryptor->getIv();
 
-        // during the 3rd encryption : the IV in use is the same than
-        // for the 2nd encryption as we haven't updated it. The data is encrypted and
-        // the IV is updated as we enabled the auto update.
-        $encrypted3 = $this->encryptor->encrypt($this->data);
-        $this->assertEquals($encrypted2, $encrypted3);
+        // during the 4th encryption, the IV will be automatically updated
+        // before the encryption process
+        $encrypted4 = $this->encryptor->encrypt($this->data);
+        $this->assertNotEquals($encrypted3, $encrypted4);
         $this->assertNotEquals($iv, $this->encryptor->getIv());
     }
 
