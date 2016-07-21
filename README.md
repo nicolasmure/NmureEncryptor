@@ -176,7 +176,7 @@ it must just implement the [`FormatterInterface`](/src/Formatter/FormatterInterf
     set it to the encryptor and returns it.
     - `public void enableAutoIvUpdate()` : enable the automatic IV update before each
     encryption process to be sure that two encryptions of the same data won't produce
-    the same output.
+    the same output. The automatic IV update is enabled by default.
     - `public void disableAutoIvUpdate()` : disable the automatic IV update before each
     encryption process. The encryption will use the last set IV or generate one if
     no IV was set.
