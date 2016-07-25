@@ -20,6 +20,7 @@ PHP data encryptor using open_ssl
 - [API](#api)
 - [Troubleshooting](#troubleshooting)
     - [Using the HexFormatter with a C# app](#using-the-hexformatter-with-a-c-app)
+- [Integration](#integration)
 - [Development / contributing](#development--contributing)
     - [Installing ecosystem](#installing-ecosystem)
     - [Testing](#testing)
@@ -208,6 +209,11 @@ $encryptor->setFormatter(new HexFormatter());
 
 $encrypted = $encryptor->encrypt('plain text data');
 ```
+
+## Integration
+
+You can use this library as standalone, or if you're using Symfony,
+it is wrapped inside the [`NmureEncryptorBundle`](https://github.com/nicolasmure/NmureEncryptorBundle "A Symfony Bundle for the nmure/encryptor library").
 
 ## Development / Contributing
 
