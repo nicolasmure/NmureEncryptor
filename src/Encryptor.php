@@ -4,6 +4,7 @@ namespace Nmure\Encryptor;
 
 use Nmure\Encryptor\Formatter\FormatterInterface;
 use Nmure\Encryptor\Exception\DecryptException;
+use Nmure\Encryptor\Exception\InvalidSecretKeyException;
 
 final class Encryptor
 {
@@ -132,6 +133,18 @@ final class Encryptor
     public function disableAutoIvUpdate()
     {
         $this->autoIvUpdate = false;
+    }
+
+    /**
+     * Turns the secret hex key into a binary key.
+     */
+    public function turnHexKeyToBin()
+    {
+        if (!ctype_xdigit($this->secret)) {
+            throw new InvalidSecretKeyException(sprintf('The secret key "%s" is not a hex key', $this->secret));
+        }
+
+        $this->secret = hex2bin($this->secret);
     }
 
     /**
