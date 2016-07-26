@@ -181,6 +181,7 @@ it must just implement the [`FormatterInterface`](/src/Formatter/FormatterInterf
     - `public void disableAutoIvUpdate()` : disable the automatic IV update before each
     encryption process. The encryption will use the last set IV or generate one if
     no IV was set.
+    - `public void turnHexKeyToBin()` : turns the hex secret key into a binary key.
     - `public string getIv()` : returns the IV of the encryptor.
     - `public void setIv($iv)` : set the given IV to the encryptor.
     - `public void setFormatter(FormatterInterface $formatter = null)` : sets the given
@@ -203,8 +204,8 @@ you'll probably have to turn your secret key into a binary key :
 use Nmure\Encryptor\Encryptor;
 use Nmure\Encryptor\Formatter\HexFormatter;
 
-$key = hex2bin('452F93C1A737722D8B4ED8DD58766D99'); // turning the hex key to a binary key
-$encryptor = new Encyptor($key, 'AES-256-CBC');
+$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor->turnHexKeyToBin(); // turning the hex key to a binary key
 $encryptor->setFormatter(new HexFormatter());
 
 $encrypted = $encryptor->encrypt('plain text data');

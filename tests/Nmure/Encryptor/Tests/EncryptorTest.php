@@ -124,6 +124,26 @@ class EncryptorTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEquals($iv, $this->encryptor->generateIv());
     }
 
+    /**
+     * @expectedException Nmure\Encryptor\Exception\InvalidSecretKeyException
+     * @expectedExceptionMessage The secret key "UVWXYZ" is not a hex key
+     */
+    public function testTurnHexKeyToBinThrowsException()
+    {
+        $enc = new Encryptor('UVWXYZ', $this->cipher);
+        $enc->turnHexKeyToBin();
+    }
+
+    public function testTurnKexKeyToBin()
+    {
+        $enc = new Encryptor(hex2bin($this->secret), $this->cipher);
+        $this->encryptor->turnHexKeyToBin();
+        $this->encryptor->disableAutoIvUpdate();
+        $enc->disableAutoIvUpdate();
+        $enc->setIv($this->encryptor->generateIv());
+        $this->assertEquals($enc->encrypt($this->data), $this->encryptor->encrypt($this->data));
+    }
+
     private function getFormatterMock()
     {
         return $this->getMockBuilder('Nmure\Encryptor\Formatter\FormatterInterface')
