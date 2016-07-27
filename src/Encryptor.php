@@ -137,6 +137,8 @@ final class Encryptor
 
     /**
      * Turns the secret hex key into a binary key.
+     *
+     * @throws InvalidSecretKeyException When the secret key is not a hex key.
      */
     public function turnHexKeyToBin()
     {
