@@ -49,7 +49,7 @@ Then you can encrypt your plain text data, for instance :
 ```php
 use Nmure\Encryptor\Encryptor;
 
-$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
 $encrypted = $encryptor->encrypt('plain text data');
 ```
 
@@ -75,7 +75,7 @@ Then, to decrypt your data, initialize the encryptor and call the `decrypt` func
 ```php
 use Nmure\Encryptor\Encryptor;
 
-$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
 // retrieve the IV ($iv) and the encryped data ($encrypted) from your DB
 // ...
 $encryptor->setIv($iv);
@@ -96,7 +96,7 @@ the [Base64Formatter](#base64formatter "Base64Formatter documentation") :
 use Nmure\Encryptor\Encryptor;
 use Nmure\Encryptor\Formatter\Base64Formatter;
 
-$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
 $encryptor->setFormatter(new Base64Formatter());
 
 // will produce a string containg the IV and the encrypted data
@@ -111,7 +111,7 @@ the `decrypt` function with the combined string :
 use Nmure\Encryptor\Encryptor;
 use Nmure\Encryptor\Formatter\Base64Formatter;
 
-$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
 $encryptor->setFormatter(new Base64Formatter());
 
 // get the encrypted data from a file, or whatever
@@ -204,7 +204,7 @@ you'll probably have to turn your secret key into a binary key :
 use Nmure\Encryptor\Encryptor;
 use Nmure\Encryptor\Formatter\HexFormatter;
 
-$encryptor = new Encyptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
+$encryptor = new Encryptor('452F93C1A737722D8B4ED8DD58766D99', 'AES-256-CBC');
 $encryptor->turnHexKeyToBin(); // turning the hex key to a binary key
 $encryptor->setFormatter(new HexFormatter());
 
