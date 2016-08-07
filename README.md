@@ -31,7 +31,7 @@ PHP data encryptor using open_ssl
 Use composer to install the lib :
 
 ```bash
-composer require nmure/encryptor "dev-master"
+composer require nmure/encryptor "~1.0.0"
 ```
 
 ## Usage
