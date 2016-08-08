@@ -31,7 +31,7 @@ final class Encryptor
 
     /**
      * Indicates if this Encryptor should automatically update
-     * its IV after an encryption.
+     * its IV before an encryption.
      *
      * @var boolean Default true (recommended)
      */
