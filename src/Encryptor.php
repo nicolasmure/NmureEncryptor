@@ -120,7 +120,7 @@ final class Encryptor
     }
 
     /**
-     * Enable the automatic IV update after each encryption.
+     * Enable the automatic IV update before each encryption.
      */
     public function enableAutoIvUpdate()
     {
@@ -128,7 +128,7 @@ final class Encryptor
     }
 
     /**
-     * Disable the automatic IV update after each encryption.
+     * Disable the automatic IV update before each encryption.
      */
     public function disableAutoIvUpdate()
     {
