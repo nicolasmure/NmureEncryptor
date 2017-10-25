@@ -2,6 +2,7 @@ language: php
 php:
     - '5.4'
     - '7.0'
+    - '7.1'
 
 before_install:
     - mkdir -p build/logs
