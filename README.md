@@ -40,7 +40,7 @@ composer require nmure/encryptor "~1.0.0"
 
 #### Encrypt
 
-The simpliest way to use this library is to create a instance of the Encryptor
+The simpliest way to use this library is to create an instance of the Encryptor
 by passing it a secret key and a cipher method to use during encryption.
 To see all the cipher methods supported by your php installation, use the
 [openssl_get_cipher_methods](http://php.net/manual/en/function.openssl-get-cipher-methods.php "Gets available cipher methods") function.
