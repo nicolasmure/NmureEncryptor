@@ -3,8 +3,9 @@
 namespace Nmure\Encryptor\Tests;
 
 use Nmure\Encryptor\Encryptor;
+use PHPUnit\Framework\TestCase;
 
-class EncryptorTest extends \PHPUnit_Framework_TestCase
+class EncryptorTest extends TestCase
 {
     /**
      * 128bit secret hex key generated using the following UNIX command

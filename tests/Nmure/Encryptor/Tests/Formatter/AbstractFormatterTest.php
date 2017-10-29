@@ -4,13 +4,14 @@ namespace Nmure\Encryptor\Tests\Formatter;
 
 use Nmure\Encryptor\Encryptor;
 use Nmure\Encryptor\Formatter\FormatterInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class asserting that a FormatterInterface fulfills the minimum
  * requirements of what it should accomplish.
  * The formatter test classes should extend this class.
  */
-abstract class AbstractFormatterTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractFormatterTest extends TestCase
 {
     protected $iv;
     protected $data = 'data';
